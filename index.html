@@ -61,15 +61,9 @@
       background: #4a4a4a;
     }
 
-    /* Operator */
     .buttons button:nth-child(4n),
     .buttons button:last-child {
       background: #ff9500;
-    }
-
-    .buttons button:nth-child(4n):hover,
-    .buttons button:last-child:hover {
-      background: #ffad33;
     }
   </style>
 </head>
@@ -77,7 +71,7 @@
 <body>
 
   <div class="calculator">
-    <input type="text" placeholder="0" disabled>
+    <input type="text" id="display" value="">
 
     <div class="buttons">
       <button>7</button>
@@ -101,6 +95,27 @@
       <button>+</button>
     </div>
   </div>
+
+  <script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        if (value === "=") {
+          try {
+            display.value = eval(display.value);
+          } catch {
+            display.value = "Error";
+          }
+        } else {
+          display.value += value;
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
