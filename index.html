@@ -4,35 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalkulator</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+    }
+
+    .calculator {
+      width: 100%;
+      max-width: 320px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .calculator input {
+      width: 100%;
+      height: 60px;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a2a;
+      color: white;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .buttons button {
+      height: 55px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #3a3a3a;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button:hover {
+      background: #4a4a4a;
+    }
+
+    /* Operator */
+    .buttons button:nth-child(4n),
+    .buttons button:last-child {
+      background: #ff9500;
+    }
+
+    .buttons button:nth-child(4n):hover,
+    .buttons button:last-child:hover {
+      background: #ffad33;
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <div class="calculator">
-      <input type="text" placeholder="0" disabled>
+  <div class="calculator">
+    <input type="text" placeholder="0" disabled>
 
-      <div class="buttons">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>/</button>
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>/</button>
 
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>*</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
 
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
 
-        <button>0</button>
-        <button>.</button>
-        <button>=</button>
-        <button>+</button>
-      </div>
+      <button>0</button>
+      <button>.</button>
+      <button>=</button>
+      <button>+</button>
     </div>
   </div>
 
