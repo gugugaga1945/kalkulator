@@ -73,25 +73,25 @@
     <input type="text" id="display" disabled>
 
     <div class="buttons">
-      <button data-value="7">7</button>
-      <button data-value="8">8</button>
-      <button data-value="9">9</button>
-      <button class="operator" data-value="/">÷</button>
+      <button data-display="7" data-calc="7">7</button>
+      <button data-display="8" data-calc="8">8</button>
+      <button data-display="9" data-calc="9">9</button>
+      <button class="operator" data-display="÷" data-calc="/">÷</button>
 
-      <button data-value="4">4</button>
-      <button data-value="5">5</button>
-      <button data-value="6">6</button>
-      <button class="operator" data-value="*">×</button>
+      <button data-display="4" data-calc="4">4</button>
+      <button data-display="5" data-calc="5">5</button>
+      <button data-display="6" data-calc="6">6</button>
+      <button class="operator" data-display="×" data-calc="*">×</button>
 
-      <button data-value="1">1</button>
-      <button data-value="2">2</button>
-      <button data-value="3">3</button>
-      <button class="operator" data-value="-">−</button>
+      <button data-display="1" data-calc="1">1</button>
+      <button data-display="2" data-calc="2">2</button>
+      <button data-display="3" data-calc="3">3</button>
+      <button class="operator" data-display="−" data-calc="-">−</button>
 
-      <button data-value="0">0</button>
-      <button data-value=".">.</button>
+      <button data-display="0" data-calc="0">0</button>
+      <button data-display="." data-calc=".">.</button>
       <button id="equal" class="operator">=</button>
-      <button class="operator" data-value="+">+</button>
+      <button class="operator" data-display="+" data-calc="+">+</button>
     </div>
   </div>
 
@@ -99,16 +99,26 @@
     const display = document.getElementById("display");
     const buttons = document.querySelectorAll("button");
 
+    let displayValue = "";
+    let calcValue = "";
+
     buttons.forEach(button => {
       button.addEventListener("click", () => {
         if (button.id === "equal") {
           try {
-            display.value = eval(display.value);
+            const result = eval(calcValue);
+            displayValue = result.toString();
+            calcValue = result.toString();
+            display.value = displayValue;
           } catch {
             display.value = "Error";
+            displayValue = "";
+            calcValue = "";
           }
         } else {
-          display.value += button.dataset.value || "";
+          displayValue += button.dataset.display;
+          calcValue += button.dataset.calc;
+          display.value = displayValue;
         }
       });
     });
