@@ -53,6 +53,11 @@ body {
   cursor: pointer;
 }
 
+/* tombol spasi jadi biru */
+.buttons button.space {
+  background: blue;
+}
+
 .buttons button:hover {
   background: #444;
 }
